@@ -3,6 +3,11 @@ const fs = require('fs');
 
 
 function copyDir() {
+  fs.rmdir('files-copy', { recursive: true }, (err) => {
+    if (err) {
+      throw err;
+    }
+
   const allFiles = fs.promises.readdir(path.join(__dirname), {withFileTypes: true});
   allFiles.then((files) => {
     for (let file of files) {
@@ -30,11 +35,10 @@ function copyDir() {
 
   function copyFile(file) {
     fs.copyFile(path.join(__dirname, 'files', file), path.join(__dirname, 'files-copy', file), (err) => {
-
       if (err) console.log(err);
-
     });
   }
+  });
 }
 
 copyDir();

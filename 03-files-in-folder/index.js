@@ -10,9 +10,7 @@ allFiles.then((res) => {
       fs.stat(filePath, (err, stats) => {
         const name = path.basename(filePath, `${path.extname(filePath)}`);
         console.log(`${name} - ${path.extname(filePath).slice(1)} - ${(stats.size / 1024).toFixed(3)} kb`);
-
       });
     }
   }
 });
-
