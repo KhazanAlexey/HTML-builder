@@ -4,10 +4,10 @@ const fs = require('fs');
 
 console.log('Enter the data to be displayed ');
 let data = '';
+const writeStream = fs.createWriteStream(path.join(__dirname, 'text.txt'), 'utf8');
+writeStream.write('')
 process.stdin.on('data', function (chunk) {
   let myBuffer = Buffer.from(chunk, 'utf8').toString();
-
-  const writeStream = fs.createWriteStream(path.join(__dirname, 'text.txt'), 'utf8');
 
   if (myBuffer.trim() == 'exit') {
     console.log('bye!');
